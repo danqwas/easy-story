@@ -90,7 +90,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm test",
+      "commit-msg": "npm run validate-commit",
+      "pre-push": "npm test && npm run lint",
+      "prepare-commit-msg": "node scripts/prepare-commit-msg.js",
+      "post-merge": "npm install && npm run build"
     }
   },
   "lint-staged": {
