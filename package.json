@@ -38,6 +38,7 @@
     "class-validator": "^0.14.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.11.2",
@@ -87,8 +88,13 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,json,css,scss,md}": "prettier --write",
+    "*.ts": "npm run lint"
+  }
 }
